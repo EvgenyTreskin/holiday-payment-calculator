@@ -31,7 +31,7 @@ public class StartController {
         return "start";
     }
 
-    public void validateInput(String as, String vd) throws IOException {
+    public static void validateInput(String as, String vd) throws IOException {
         String message = "";
         boolean valid = true;
         if (!isPositiveNumber(as)) {
@@ -47,7 +47,7 @@ public class StartController {
         }
     }
 
-    public double getHolidayPayment(double averageSalary, double vacationDuration) {
+    public static double getHolidayPayment(double averageSalary, double vacationDuration) {
         double scale = Math.pow(10, 2);
         return Math.ceil(averageSalary * vacationDuration * scale)/scale;
     }

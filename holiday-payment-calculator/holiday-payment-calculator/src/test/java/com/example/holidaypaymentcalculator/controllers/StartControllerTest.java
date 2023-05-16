@@ -26,23 +26,12 @@ class StartControllerTest {
 
 
     @Test
-    void validateInputTrowsNullTest() {
+    void validateInputTrowsEmptyTest() {
         Exception exception = assertThrows(IOException.class, () -> startController.validateInput("", ""));
         assertTrue(exception.getMessage().contains(invalidSalaryMassage));
         assertTrue(exception.getMessage().contains(invalidDurationMessage));
     }
-    @Test
-    void validateInputTrowsCharsTest() {
-        Exception exception = assertThrows(IOException.class, () -> startController.validateInput("f", "/"));
-        assertTrue(exception.getMessage().contains(invalidSalaryMassage));
-        assertTrue(exception.getMessage().contains(invalidDurationMessage));
-    }
-    @Test
-    void validateInputTrowsNegativeTest() {
-        Exception exception = assertThrows(IOException.class, () -> startController.validateInput("-1", "-22.2"));
-        assertTrue(exception.getMessage().contains(invalidSalaryMassage));
-        assertTrue(exception.getMessage().contains(invalidDurationMessage));
-    }
+
 
     @Test
     void getHolidayPaymentTwoPositiveTest() {
@@ -73,6 +62,22 @@ class StartControllerTest {
     void getHolidayPaymentZeroPositiveTest() {
         assertEquals(0, startController.getHolidayPayment(
                 63.2, 0));
+    }
+    @Test
+    void isPositiveNumberTestPositive(){
+        assertTrue(startController.isPositiveNumber("30.3"));
+    }
+    @Test
+    void isPositiveNumberTestNegative() {
+        assertFalse(startController.isPositiveNumber("-2"));
+    }
+    @Test
+    void isPositiveNumberTestZero() {
+        assertFalse(startController.isPositiveNumber("0"));
+    }
+    @Test
+    void isPositiveNumberTestChar() {
+        assertFalse(startController.isPositiveNumber("h"));
     }
 
 }
