@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
@@ -35,7 +33,7 @@ public class StartController {
 
     public void validateInput(String as, String vd) throws IOException {
         String message = "";
-        Boolean valid = true;
+        boolean valid = true;
         if (!isPositiveNumber(as)) {
             message += "Please specify average salary as number greater then zero.\n";
             valid = false;
@@ -50,7 +48,7 @@ public class StartController {
     }
 
     public double getHolidayPayment(double averageSalary, double vacationDuration) {
-        double scale = Math.pow(10, 3);
+        double scale = Math.pow(10, 2);
         return Math.ceil(averageSalary * vacationDuration * scale)/scale;
     }
 
@@ -70,26 +68,4 @@ public class StartController {
     }
 
 }
-//        if (as.isEmpty()) {
-//            message += "Average salary not specified!\n";
-//            valid = false;
-//        }
-//        if (vd.isEmpty()) {
-//            message += "Vacation duration not specified!\n";
-//            valid = false;
-//        }
-//        if (!as.isEmpty() && !vd.isEmpty()) {
-//            try {
-//                double averageSalary = Double.parseDouble(as);
-//                double vacationDuration = Double.parseDouble(vd);
-//                if (averageSalary <= 0 || vacationDuration <= 0) {
-//                    message = "Average salary and Vacation duration must be above zero!\n";
-//                    valid = false;
-//                } else {
-//                    double holidayPayment = getHolidayPayment(averageSalary, vacationDuration);
-//                    message = "Your holiday payment is: " + holidayPayment;
-//                }
-//            } catch (Exception e) {
-//                message = "Average salary and Vacation duration must be a number! ";
-//            }
-//        }
+

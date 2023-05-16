@@ -15,8 +15,7 @@ class StartControllerTest {
     private final StartController startController = new StartController();
     String invalidSalaryMassage = "Please specify average salary as number greater then zero.\n";
     String invalidDurationMessage = "Please specify duration vacation as number greater then zero.\n";
-    @Mock
-    private Model model;
+
 
 
     @Test
